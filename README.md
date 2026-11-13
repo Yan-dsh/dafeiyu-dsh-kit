@@ -7,6 +7,8 @@
 
 ![cover](https://raw.githubusercontent.com/Yan-dsh/dafeiyu-dsh-kit/main/assets/cover-3x4.png)
 
+> 搜索关键词 / Keywords: dsh, dsh plugin, deepseek harness, 大肥鱼, 桌宠, ffmpeg, 竖屏视频, vertical video
+
 ---
 
 ## 中文
