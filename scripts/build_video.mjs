@@ -1,0 +1,12 @@
+import { spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+const dir = '<WORK>/avatars/yan-self/video';
+const n = 8;
+const filter = fs.readFileSync(dir + '/filter_mcp2.txt', 'utf8').trim();
+const args = ['-y','-framerate','15','-i', dir + '/mcpframes/%04d.png'];
+for (let i = 0; i < n; i++) args.push('-loop','1','-i', dir + '/mc' + i + '.png');
+args.push('-i', dir + '/voice_mcp.mp3');
+args.push('-filter_complex', filter, '-map','[vout]','-map', String(n + 1) + ':a','-t','46.6','-r','30','-c:v','libx264','-pix_fmt','yuv420p','-crf','20','-c:a','aac','-b:a','192k', dir + '/yan-mcp.mp4');
+const r = spawnSync('C:/Tools/ffmpeg/bin/ffmpeg.exe', args, { encoding: 'utf8', maxBuffer: 1<<26 });
+console.log('status', r.status);
+console.log((r.stderr||'').split('\n').slice(-3).join('\n'));
