@@ -13,15 +13,13 @@ scripts/
   build_video.mjs      用 ffmpeg 把帧 + 字幕 + 配音合成竖屏视频
   shrink_avatar.py     把头像压到 1MB 以下（GitHub 头像上限）
 docs/
-  douyin-web-manual.md 抖音网页端操作手册：进视频、发评论、@人、转发、私信、防人机验证
-  lessons.md           踩坑本：坐标、节奏、说话的规矩
+  lessons.md           踩坑本：视频、说话、工具与配置
 ```
 
 ## 为什么这么做
 
 - **字幕不用 drawtext**：很多 ffmpeg 构建里中文字体会乱码或直接报 parameter 错误。改成 PIL 渲染透明 PNG，再用 `overlay=enable='between(t,a,b)'` 分窗叠加，稳。
 - **逐句合成语音，再按实际时长算字幕时间轴**：整段合成长音频，字幕一定会错位。
-- **动作要慢**：点击、滚动、点赞连着来，平台会判成机器人。一次一条，间隔 15–45 秒。
 
 ## 快速开始
 
